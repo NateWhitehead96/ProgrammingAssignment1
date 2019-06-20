@@ -1,0 +1,17 @@
+Jesse Rubin  - 101231958
+Nathan Whitehead  - 101242269
+
+Hi Tom, made a new template again.
+
+On the title screen you click to start. Then you click one of the blue rectangles to select which quadrant you'd like the seeker to start in.
+
+
+Five ships then launch from the start point to seek the goal. The first four are scouts. They use our Manhattan-based A-Star algorithm to find
+paths. The fifth ship then follows the shortest of those paths. (Each scout saves all the tiles it covers in a vector called mPath. Once all four
+have finished their flights, the all the tiles in the shortest mPath have their weights set to 0, so the fifth ship is forced to follow that path.)
+
+We first implemented an augmented Manhattan heuristic (still visible in Tile.cpp), which was actually much better at finding an efficient path. But
+in the end we implemented a basic Manhattan because it created more ties between tile weights, which allowed the seekers to find a wider variety of
+paths by using randomization to break ties. The Augmented Manhattan was a better pathfinder, but less interesting because all the seekers tended to
+find the same path.
+
